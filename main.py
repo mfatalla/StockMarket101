@@ -16,7 +16,7 @@ st.set_page_config(
     layout= 'wide',
     initial_sidebar_state="expanded",
 )
-@st.cache
+
 def load_data():
     components = pd.read_html(
         "https://en.wikipedia.org/wiki/List_of_S" "%26P_500_companies"
@@ -24,7 +24,6 @@ def load_data():
     return components.drop("SEC filings", axis=1).set_index("Symbol")
 
 
-@st.cache(allow_output_mutation=True)
 def load_quotes(asset):
     return yf.download(asset)
 
