@@ -1,0 +1,10 @@
+streamlit==0.84.0
+yfinance==0.1.59
+pandas==1.2.4
+numpy==1.20.2
+plotly==4.14.3
+beautifulsoup4==4.9.3
+bs4==0.0.1
+requests~=2.25.1
+bokeh~=2.2.0
+Markdown~=3.3.4
