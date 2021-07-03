@@ -184,9 +184,9 @@ if menubar == 'Overview':
                 st.subheader(f"{asset} historical data")
                 st.write(data2)
 
-        st.title("Candlestick Chart")
-        candlestick = st.beta_container()
-        with candlestick:
+        #st.title("Candlestick Chart")
+        #candlestick = st.beta_container()
+        #with candlestick:
 
                 candlechart_expander = st.beta_expander(label='Line Chart Settings')
                 with candlechart_expander:
