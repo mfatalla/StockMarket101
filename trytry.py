@@ -356,6 +356,41 @@ elif menubar == 'News':
 
         st.text(" ")
 
+    if attributes == "Stock Market News":
+
+        url = 'https://stockanalysis.com/news'
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        title = soup.find('h1', {'class': 'entry-title'}).text
+
+        x = 0
+        for x in DSort:
+            newsTitle1 = soup.find_all('div', {'class': 'news-side'})[x].find('div').text
+            time1 = soup.find_all('div', {'class': 'news-meta'})[x].find('span').text
+            newsThumbnail1 = soup.find_all('div', {'class': 'news-img'})[x].find('img')
+            newsBody1 = soup.find_all('div', {'class': 'news-text'})[x].find('p').text
+            hreflink1 = soup.find_all('div', {'class': 'news-img'})[x].find('a')
+            link1 = hreflink1.get('href')
+            newsimg1 = newsThumbnail1.get('data-src')
+
+            chart1, chart2, chart3 = st.beta_columns([1, 2, 1])
+            with chart1:
+                st.image(newsimg1)
+            with chart2:
+                st.markdown(f"<h1 style='font-weight: bold; font-size: 17px;'>{newsTitle1}</h1>",
+                            unsafe_allow_html=True)
+                st.markdown(newsBody1)
+                link1 = "(" + link1 + ")"
+                concatclink = '[[Link]]' + link1
+                st.markdown("Source: " + concatclink, unsafe_allow_html=True)
+                st.text(" ")
+                st.text(" ")
+
+            with chart3:
+                st.markdown(time1)
+
+        st.text(" ")
+
 elif menubar == 'Technical Indicators':
     st.image('data//logo1.png')
 elif menubar == 'Company Profile':
